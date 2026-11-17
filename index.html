@@ -4,25 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Automind Media</title>
-<meta name="description" content="Automind Media makes video ads and graphic ads for businesses to post on social media using AI tools, directed by a person. Build your quote in under a minute.">
+<meta name="description" content="Automind Media is an advertising studio specialized in social media. Video ads, graphic ads and marketing plans for TikTok, Instagram, Facebook and YouTube using AI tools, directed by a person. Build your quote in under a minute.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: a poster wall. Each chapter is its own flat colour block with thick
-   black rules, square corners and hard offset shadows. Type does the shouting;
-   one typeface, stretched wide for headlines. Left-aligned. */
+/* Layout idea: a calm production studio. Cool light greys and white, ink-dark
+   bands for emphasis, one signal-orange accent on actions and prices. Thin rules,
+   small radii, no hard shadows. One typeface, stretched wide for headlines. */
 :root {
   color-scheme: light;
-  --paper: #FDF2F8;     /* pink-tinted paper */
+  --paper: #F4F5F7;     /* cool studio grey */
+  --soft: #EBEDF1;
   --card: #FFFFFF;
-  --ink: #0B0B0F;
-  --muted: #4A4458;
-  --pink: #EC4899;
-  --cyan: #22D3EE;
-  --sun: #FDE047;
-  --rule: 3px solid var(--ink);
-  --drop: 6px 6px 0 var(--ink);
+  --ink: #14171C;       /* ink */
+  --muted: #555B66;
+  --line: #D9DCE2;
+  --signal: #F0461F;    /* signal orange, actions and prices only */
+  --signal-dark: #C9350F;
+  --tint: #FDE6DE;
+  --pink: var(--signal);
+  --cyan: var(--soft);
+  --sun: var(--signal);
+  --rule: 1px solid var(--line);
+  --drop: 0 1px 2px rgba(20, 23, 28, 0.06), 0 8px 24px rgba(20, 23, 28, 0.06);
+  --radius: 10px;
   --font: "Archivo", "Arial Black", Arial, sans-serif;
   --wrap: 1180px;
 }
@@ -40,12 +46,12 @@ p { margin: 0; max-width: 58ch; }
 .lede { font-size: 1.2rem; }
 
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 12px 24px; font: inherit; font-weight: 800; font-stretch: 105%; cursor: pointer; text-decoration: none; color: var(--ink); background: var(--sun); border: var(--rule); box-shadow: var(--drop); transition: transform 0.12s, box-shadow 0.12s; }
-.btn:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--ink); }
+.btn:hover { transform: translate(3px, 3px); box-shadow: var(--drop); }
 .btn:active { transform: translate(6px, 6px); box-shadow: 0 0 0 var(--ink); }
 .btn.white { background: var(--card); }
 .btn.pink { background: var(--pink); }
-.btn.dark { background: var(--ink); color: #fff; box-shadow: 6px 6px 0 var(--pink); }
-.btn.dark:hover { box-shadow: 3px 3px 0 var(--pink); }
+.btn.dark { background: var(--ink); color: #fff; box-shadow: var(--drop); }
+.btn.dark:hover { box-shadow: var(--drop); }
 
 /* Header */
 .bar { border-bottom: var(--rule); background: var(--card); }
@@ -55,7 +61,7 @@ p { margin: 0; max-width: 58ch; }
 .nav { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
 .nav a:not(.btn) { text-decoration: none; font-weight: 700; padding: 10px 0; }
 .nav a:not(.btn):hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
-.nav .btn { min-height: 44px; padding: 8px 18px; box-shadow: 4px 4px 0 var(--ink); }
+.nav .btn { min-height: 44px; padding: 8px 18px; box-shadow: var(--drop); }
 
 /* Hero */
 .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: center; padding-top: 64px; padding-bottom: 80px; }
@@ -63,12 +69,12 @@ p { margin: 0; max-width: 58ch; }
 .hero-copy mark { background: var(--sun); color: inherit; padding: 0 0.12em; box-shadow: inset 0 0 0 3px var(--ink); }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
-.monitor { background: var(--ink); border: var(--rule); padding: 12px; color: #fff; box-shadow: 12px 12px 0 var(--pink); }
+.monitor { background: var(--ink); border: var(--rule); padding: 12px; color: #fff; box-shadow: var(--drop); }
 .screen { position: relative; aspect-ratio: 16 / 9; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 6% 7%; background-color: #B8860B; }
 .screen[data-shot="1"] { background: radial-gradient(circle at 78% 30%, #FFD27A 0 14%, transparent 14.5%), linear-gradient(160deg, #E0531F, #7A2410); }
 .screen[data-shot="2"] { background: repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 12%, transparent 12% 16%), linear-gradient(160deg, #46608C, #1B2A4D); }
 .screen[data-shot="3"] { background: radial-gradient(ellipse at 74% 100%, #FFE08A 0 34%, transparent 34.5%), linear-gradient(160deg, #D48A12, #8A4B08); }
-.screen[data-shot="4"] { background: radial-gradient(circle at 80% 28%, var(--sun) 0 11%, transparent 11.5%), linear-gradient(160deg, #BE185D, #500724); }
+.screen[data-shot="4"] { background: radial-gradient(circle at 80% 28%, var(--sun) 0 11%, transparent 11.5%), linear-gradient(160deg, #F0461F, #6E1C07); }
 .rec { position: absolute; top: 8%; left: 7%; display: flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 800; font-variant-numeric: tabular-nums; }
 .rec b { width: 12px; height: 12px; border-radius: 50%; background: #FF3B30; display: block; }
 .shot-no { position: absolute; top: 8%; right: 7%; font-size: 0.82rem; font-weight: 800; }
@@ -110,18 +116,18 @@ p { margin: 0; max-width: 58ch; }
 .frame.a { background: radial-gradient(circle at 70% 35%, #FFD27A 0 20%, transparent 21%), linear-gradient(160deg, #E0531F, #7A2410); }
 .frame.b { background: repeating-linear-gradient(90deg, rgba(255,255,255,0.1) 0 18%, transparent 18% 25%), linear-gradient(160deg, #46608C, #1B2A4D); }
 .frame.c { background: radial-gradient(ellipse at 70% 100%, #FFE08A 0 40%, transparent 41%), linear-gradient(160deg, #D48A12, #8A4B08); }
-.frame.d { background: radial-gradient(circle at 72% 32%, var(--sun) 0 17%, transparent 18%), linear-gradient(160deg, #BE185D, #500724); }
+.frame.d { background: radial-gradient(circle at 72% 32%, var(--sun) 0 17%, transparent 18%), linear-gradient(160deg, #F0461F, #6E1C07); }
 .flyers { display: flex; justify-content: center; align-items: center; width: 100%; }
-.fly { width: 31%; max-width: 160px; aspect-ratio: 4 / 5; border: var(--rule); padding: 10px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 5px 5px 0 var(--ink); line-height: 1; }
+.fly { width: 31%; max-width: 160px; aspect-ratio: 4 / 5; border: var(--rule); padding: 10px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--drop); line-height: 1; }
 .fly b { font-weight: 900; font-stretch: 110%; font-size: clamp(0.95rem, 1.7vw, 1.3rem); letter-spacing: -0.02em; }
 .fly small { font-weight: 700; font-size: 0.64rem; line-height: 1.25; }
-.fly i { display: block; height: 28%; border: 2px solid var(--ink); }
+.fly i { display: block; height: 28%; border: 1px solid var(--line); }
 .fly.one { background: var(--sun); transform: rotate(-7deg) translateX(10px); }
 .fly.one i { background: radial-gradient(circle at 50% 100%, #E0531F 0 60%, #fff 61%); }
 .fly.two { background: #fff; transform: translateY(-10px); z-index: 1; }
-.fly.two i { background: repeating-linear-gradient(135deg, var(--cyan) 0 10px, var(--ink) 10px 20px); }
+.fly.two i { background: repeating-linear-gradient(135deg, #C9CDD5 0 10px, var(--ink) 10px 20px); }
 .fly.three { background: var(--ink); color: #fff; transform: rotate(7deg) translateX(-10px); }
-.fly.three i { border-color: #fff; background: radial-gradient(circle at 30% 50%, var(--pink) 0 28%, transparent 29%), radial-gradient(circle at 70% 50%, var(--sun) 0 28%, transparent 29%); }
+.fly.three i { border-color: #fff; background: radial-gradient(circle at 30% 50%, var(--pink) 0 28%, transparent 29%), radial-gradient(circle at 70% 50%, #fff 0 28%, transparent 29%); }
 .note { font-size: 0.9rem; margin-top: 20px; font-weight: 600; }
 
 .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: var(--rule); box-shadow: var(--drop); counter-reset: step; background: var(--card); }
@@ -136,9 +142,9 @@ p { margin: 0; max-width: 58ch; }
 .list { background: var(--card); border: var(--rule); box-shadow: var(--drop); padding: 30px; }
 .list h3 { font-size: 1.6rem; font-weight: 900; margin-bottom: 16px; }
 .list ul, .ticket ul.always { margin: 0; padding: 0; list-style: none; }
-.list li { padding: 12px 0 12px 36px; border-bottom: 2px solid var(--ink); font-weight: 600; position: relative; }
+.list li { padding: 12px 0 12px 36px; border-bottom: 1px solid var(--line); font-weight: 600; position: relative; }
 .list li:last-child { border-bottom: 0; }
-.list li::before, .always li::before { content: ""; position: absolute; left: 0; top: 14px; width: 18px; height: 18px; background: var(--sun); border: 2px solid var(--ink); }
+.list li::before, .always li::before { content: ""; position: absolute; left: 0; top: 14px; width: 18px; height: 18px; background: var(--sun); border: 1px solid var(--line); }
 .list li::after, .always li::after { content: ""; position: absolute; left: 6px; top: 16px; width: 5px; height: 10px; border: solid var(--ink); border-width: 0 3px 3px 0; transform: rotate(45deg); }
 
 /* Quote builder (toggle rows and live total adapted from a 21st.dev add-on pricing block) */
@@ -148,7 +154,7 @@ p { margin: 0; max-width: 58ch; }
 .panel[hidden] { display: none; }
 .panel > h3 { padding: 16px 20px; border-bottom: var(--rule); background: var(--ink); color: #fff; }
 .panel .sub { padding: 16px 20px 0; font-weight: 700; }
-.row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 20px; min-height: 64px; border-bottom: 2px solid var(--ink); cursor: pointer; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 20px; min-height: 64px; border-bottom: 1px solid var(--line); cursor: pointer; }
 .row:last-child { border-bottom: 0; }
 .row:hover { background: var(--paper); }
 .row-text { display: flex; flex-direction: column; }
@@ -161,9 +167,9 @@ p { margin: 0; max-width: 58ch; }
 .switch input:checked + i { background: var(--pink); }
 .switch input:checked + i::after { transform: translateX(24px); }
 .switch input:focus-visible + i { outline: 4px solid var(--ink); outline-offset: 3px; }
-.picks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 2px solid var(--ink); }
+.picks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
 .picks.three { grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 0; }
-.pick { position: relative; border-right: 2px solid var(--ink); }
+.pick { position: relative; border-right: 1px solid var(--line); }
 .pick:last-child { border-right: 0; }
 .pick input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .pick span { display: flex; flex-direction: column; gap: 2px; padding: 14px 12px; min-height: 68px; font-weight: 800; justify-content: center; }
@@ -171,7 +177,7 @@ p { margin: 0; max-width: 58ch; }
 .pick input:checked + span { background: var(--sun); }
 .pick input:checked + span small { color: var(--ink); }
 .pick input:focus-visible + span { outline: 4px solid var(--ink); outline-offset: -4px; }
-.hint { padding: 12px 20px; font-size: 0.9rem; font-weight: 600; color: var(--muted); border-bottom: 2px solid var(--ink); }
+.hint { padding: 12px 20px; font-size: 0.9rem; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line); }
 .fields { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field label { font-weight: 800; font-size: 0.95rem; }
@@ -179,7 +185,7 @@ p { margin: 0; max-width: 58ch; }
 .field textarea { min-height: 110px; resize: vertical; }
 .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 
-.ticket { position: sticky; top: 20px; background: var(--sun); border: var(--rule); box-shadow: 10px 10px 0 var(--ink); padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+.ticket { position: sticky; top: 20px; background: var(--sun); border: var(--rule); box-shadow: var(--drop); padding: 28px; display: flex; flex-direction: column; gap: 18px; }
 .ticket h3 { font-size: 1.1rem; }
 .price { font-weight: 900; font-stretch: 118%; font-size: clamp(3.2rem, 7vw, 5rem); line-height: 0.9; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; display: flex; flex-wrap: wrap; }
 .price.small { font-size: clamp(1.9rem, 4vw, 2.6rem); }
@@ -187,7 +193,7 @@ p { margin: 0; max-width: 58ch; }
 @keyframes roll { from { transform: translateY(45%); opacity: 0; } to { transform: none; opacity: 1; } }
 .split { font-weight: 700; font-variant-numeric: tabular-nums; }
 .lines { list-style: none; margin: 0; padding: 0; border-top: var(--rule); }
-.lines li { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 2px solid var(--ink); font-size: 0.95rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.lines li { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 0.95rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 .lines li span:last-child { white-space: nowrap; font-weight: 800; }
 .ticket p { font-size: 0.92rem; font-weight: 600; }
 .ticket .btn { width: 100%; }
@@ -197,14 +203,145 @@ p { margin: 0; max-width: 58ch; }
 .always li::before { top: 7px; background: var(--card); }
 .always li::after { top: 9px; }
 
+/* Footage sources (adapted from a 21st.dev neobrutalism image card) */
+.sources { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.src { margin: 0; background: var(--card); border: var(--rule); box-shadow: var(--drop); display: flex; flex-direction: column; }
+.src .pic { aspect-ratio: 4 / 3; border-bottom: var(--rule); position: relative; overflow: hidden; }
+.src figcaption { padding: 22px; display: flex; flex-direction: column; gap: 8px; }
+.src figcaption h3 { font-size: 1.45rem; font-weight: 900; }
+.src .tag { align-self: flex-start; }
+.pic.phone { background: var(--sun); display: flex; align-items: center; justify-content: center; }
+.pic.phone i { width: 34%; height: 82%; background: var(--ink); border-radius: 16px; position: relative; display: block; box-shadow: var(--drop); }
+.pic.phone i::before { content: ""; position: absolute; inset: 9% 7% 12%; border-radius: 6px; background: radial-gradient(circle at 70% 30%, #FFD27A 0 16%, transparent 17%), linear-gradient(160deg, #E0531F, #7A2410); }
+.pic.phone i::after { content: ""; position: absolute; left: 50%; bottom: 4%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #fff; }
+.pic.cam { background: var(--cyan); display: flex; align-items: center; justify-content: center; }
+.pic.cam i { width: 52%; height: 40%; background: var(--ink); position: relative; display: block; box-shadow: var(--drop); }
+.pic.cam i::before { content: ""; position: absolute; top: 50%; left: 50%; width: 46%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, #3552FF 0 30%, #0B0B0F 31% 46%, #8A8A99 47% 60%, #0B0B0F 61%); }
+.pic.cam i::after { content: ""; position: absolute; top: -22%; left: 10%; width: 26%; height: 22%; background: var(--ink); }
+.pic.cam b { position: absolute; top: 12%; right: 12%; width: 14px; height: 14px; border-radius: 50%; background: #FF3B30; box-shadow: 0 0 0 3px var(--ink); }
+.pic.gen { background: var(--pink); display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 14%; }
+.pic.gen span { border: 1px solid var(--line); background: var(--card); }
+.pic.gen span:nth-child(3n) { background: var(--sun); }
+.pic.gen span:nth-child(4n+1) { background: var(--cyan); }
+.pic.gen span:nth-child(5) { background: var(--ink); }
+
+/* Marketing plans (layout adapted from a 21st.dev two-plan pricing block) */
+.plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: stretch; }
+.plan { position: relative; background: var(--card); border: var(--rule); box-shadow: var(--drop); padding: 32px; display: flex; flex-direction: column; gap: 22px; }
+.plan.best { background: var(--sun); box-shadow: var(--drop); }
+.plan .flag { position: absolute; top: -18px; left: 24px; background: var(--ink); color: #fff; font-weight: 800; padding: 4px 12px; border: var(--rule); }
+.plan h3 { font-size: 1.9rem; font-weight: 900; }
+.plan .cost { display: flex; align-items: baseline; gap: 10px; border-top: var(--rule); border-bottom: var(--rule); padding: 16px 0; }
+.plan .cost b { font-weight: 900; font-stretch: 118%; font-size: clamp(2.6rem, 5vw, 3.6rem); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.plan .cost span { font-weight: 700; }
+.plan ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
+.plan li { position: relative; padding: 9px 0 9px 32px; font-weight: 600; border-bottom: 1px solid var(--line); }
+.plan li:last-child { border-bottom: 0; }
+.plan li::before { content: ""; position: absolute; left: 0; top: 11px; width: 18px; height: 18px; background: var(--card); border: 1px solid var(--line); }
+.plan.best li::before { background: var(--pink); }
+.plan li::after { content: ""; position: absolute; left: 6px; top: 13px; width: 5px; height: 10px; border: solid var(--ink); border-width: 0 3px 3px 0; transform: rotate(45deg); }
+.plan .btn { margin-top: auto; }
+.monthly { font-weight: 800; font-variant-numeric: tabular-nums; border: var(--rule); background: var(--card); padding: 10px 14px; }
+.monthly[hidden] { display: none; }
+
 footer { background: var(--ink); color: #fff; padding: 44px 0; }
 footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
 footer .mark { color: #fff; }
 footer .mark i { border-color: #fff; }
 footer a.mail { color: var(--sun); font-weight: 700; }
 
+/* Ink and signal orange: overrides for the calmer, more serious treatment */
+.btn { background: var(--signal); color: #fff; border: 1px solid var(--signal); border-radius: 8px; box-shadow: none; }
+.btn:hover { background: var(--signal-dark); border-color: var(--signal-dark); transform: none; box-shadow: none; }
+.btn:active { transform: translateY(1px); box-shadow: none; }
+.btn.white { background: var(--card); color: var(--ink); border-color: var(--line); }
+.btn.white:hover { background: var(--soft); border-color: var(--line); }
+.btn.pink { background: var(--signal); color: #fff; }
+.btn.dark { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: none; }
+.btn.dark:hover { background: #2A2F38; border-color: #2A2F38; box-shadow: none; }
+.nav .btn { box-shadow: none; }
+.mark i { background: var(--signal); border: 0; border-radius: 3px; }
+.hero-copy mark { background: none; box-shadow: inset 0 -0.16em 0 var(--signal); padding: 0; }
+.monitor { border: 0; border-radius: 14px; box-shadow: var(--drop); }
+.screen { border-radius: 6px; }
+.seg { border-radius: 4px; }
+.marquee { background: var(--ink); color: #fff; border-top: 0; border-bottom: 0; }
+.marquee span::after { background: var(--signal); }
+.chapter { border-bottom: 0; }
+.chapter.cyan { background: var(--soft); }
+.chapter.pink { background: var(--ink); color: #F4F5F7; }
+.chapter.pink .lede { color: #C3C7CF; }
+.card, .list, .plan, .src, .panel, .steps { border-radius: var(--radius); overflow: hidden; color: var(--ink); }
+.card, .list, .plan, .src, .panel { border: 1px solid var(--line); }
+.stage { border: 0; border-radius: 8px; }
+.stage.print { background: var(--soft); }
+.fly { box-shadow: var(--drop); border: 1px solid var(--line); border-radius: 4px; }
+.fly.one { background: var(--signal); color: #fff; }
+.fly i, .fly.three i { border: 0; border-radius: 3px; }
+.tag { background: var(--tint); color: var(--signal-dark); border: 0; border-radius: 999px; padding: 4px 12px; font-size: 0.9rem; }
+.steps { border: 0; box-shadow: none; background: transparent; gap: 16px; }
+.steps li { background: #20242B; color: #F4F5F7; border: 0; border-radius: var(--radius); }
+.steps li:nth-child(1), .steps li:nth-child(3) { background: #20242B; }
+.steps li::before { color: var(--signal); }
+.steps li p { color: #C3C7CF; }
+.list li::before, .always li::before, .plan li::before { background: var(--signal); border: 0; border-radius: 4px; }
+.list li::after, .always li::after, .plan li::after { border-color: #fff; }
+.plan { overflow: visible; }
+.incl-box { background: #20242B; border: 1px solid #2E333B; border-radius: 8px; padding: 14px 16px; }
+.incl-box[hidden], .plan-note[hidden] { display: none; }
+.incl-box b { display: block; font-weight: 800; margin-bottom: 6px; color: #fff; }
+.incl-box ul { margin: 0; padding: 0; list-style: none; }
+.incl-box li { position: relative; padding: 4px 0 4px 22px; font-size: 0.92rem; font-weight: 600; color: #DCDFE4; }
+.incl-box li::before { content: ""; position: absolute; left: 0; top: 10px; width: 10px; height: 10px; border-radius: 2px; background: var(--signal); }
+.plan-note { padding: 14px 20px; border-top: 1px solid var(--line); font-size: 0.92rem; font-weight: 600; color: var(--muted); background: var(--paper); }
+.plan-note b { color: var(--ink); }
+.plan.best .btn.dark { background: var(--signal); border-color: var(--signal); }
+.plan.best .btn.dark:hover { background: var(--signal-dark); border-color: var(--signal-dark); }
+.plan.best { background: var(--ink); color: #F4F5F7; box-shadow: var(--drop); border-color: var(--ink); }
+.plan.best .cost b { color: var(--signal); }
+.plan.best .cost, .plan.best li { border-color: #2E333B; }
+.plan.best li::before { background: var(--signal); }
+.plan .flag { background: var(--signal); color: #fff; border: 0; border-radius: 999px; top: -14px; padding: 4px 14px; }
+.plan .cost { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.pic.phone { background: var(--soft); }
+.pic.phone i { box-shadow: var(--drop); }
+.pic.cam { background: #E3E6EB; }
+.pic.cam i { box-shadow: var(--drop); }
+.pic.cam b { box-shadow: none; }
+.pic.gen { background: var(--ink); }
+.pic.gen span { border: 0; border-radius: 3px; background: #2E333B; }
+.pic.gen span:nth-child(3n) { background: var(--signal); }
+.pic.gen span:nth-child(4n+1) { background: #5A606B; }
+.pic.gen span:nth-child(5) { background: #F4F5F7; }
+.src .pic { border-bottom: 1px solid var(--line); }
+.panel > h3 { background: var(--card); color: var(--ink); border-bottom: 1px solid var(--line); }
+.row:hover { background: var(--paper); }
+.switch i { border: 1px solid #B9BEC7; border-radius: 999px; background: var(--soft); }
+.switch i::after { border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(20, 23, 28, 0.25); top: 4px; left: 4px; width: 22px; height: 22px; }
+.switch input:checked + i { background: var(--signal); border-color: var(--signal); }
+.switch input:checked + i::after { transform: translateX(24px); }
+.pick input:checked + span { background: var(--tint); box-shadow: inset 0 0 0 2px var(--signal); }
+.pick input:checked + span small { color: var(--signal-dark); }
+.field input, .field textarea { border: 1px solid #C5CAD2; border-radius: 8px; }
+.ticket { background: var(--ink); color: #F4F5F7; border: 0; border-radius: 14px; box-shadow: var(--drop); }
+.ticket .price { color: var(--signal); }
+.ticket .lines { border-top: 1px solid #2E333B; }
+.ticket .lines li { border-bottom: 1px solid #2E333B; }
+.ticket .split, .ticket p { color: #C3C7CF; }
+.ticket a.addr { color: #fff; }
+.ticket .btn.dark { background: var(--signal); border-color: var(--signal); }
+.ticket .btn.dark:hover { background: var(--signal-dark); border-color: var(--signal-dark); }
+.ticket .btn.white { background: transparent; color: #fff; border-color: #4A505A; }
+.ticket .btn.white:hover { background: #20242B; }
+.ticket .status { color: #FF8A66; }
+.monthly { background: #20242B; border: 1px solid #2E333B; border-radius: 8px; color: #fff; }
+.always li::after { border-color: #fff; }
+footer .mark i { border: 0; }
+footer a.mail { color: #FF8A66; }
+:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+
 @media (max-width: 920px) {
-  .hero, .quote, .work, .incl { grid-template-columns: minmax(0, 1fr); }
+  .hero, .quote, .work, .incl, .plans, .sources { grid-template-columns: minmax(0, 1fr); }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .steps li:nth-child(2) { border-right: 0; }
   .steps li:nth-child(-n+2) { border-bottom: var(--rule); }
@@ -218,14 +355,14 @@ footer a.mail { color: var(--sun); font-weight: 700; }
   .steps li:last-child { border-bottom: 0; }
   .picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .picks .pick:nth-child(2) { border-right: 0; }
-  .picks .pick:nth-child(-n+2) { border-bottom: 2px solid var(--ink); }
+  .picks .pick:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .picks.three { grid-template-columns: minmax(0, 1fr); }
-  .picks.three .pick { border-right: 0; border-bottom: 2px solid var(--ink); }
+  .picks.three .pick { border-right: 0; border-bottom: 1px solid var(--line); }
   .picks.three .pick:last-child { border-bottom: 0; }
   .seg { font-size: 0; padding: 0; }
   .nav a:not(.btn) { display: none; }
-  .card, .list, .ticket { padding: 22px; }
-  .monitor { box-shadow: 7px 7px 0 var(--pink); }
+  .card, .list, .ticket, .plan { padding: 22px; }
+  .monitor { box-shadow: var(--drop); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -245,6 +382,7 @@ footer a.mail { color: var(--sun); font-weight: 700; }
     <a class="mark" href="#top"><i aria-hidden="true"></i>Automind Media</a>
     <nav class="nav" aria-label="Main">
       <a href="#work">What we make</a>
+      <a href="#plans">Marketing plans</a>
       <a href="#how">How it works</a>
       <a class="btn" href="#quote">Build your quote</a>
     </nav>
@@ -254,8 +392,8 @@ footer a.mail { color: var(--sun); font-weight: 700; }
 <main>
   <div class="wrap hero">
     <div class="hero-copy">
-      <h1>Social media ads that get your business <mark>noticed.</mark></h1>
-      <p class="lede">Video and graphic ads for TikTok, Instagram, Facebook and YouTube. We write, design and produce them with AI tools, and a person directs every one. No film crew, no agency fees. Video ads start at $350 and graphic ads at $75.</p>
+      <h1>Social media advertising that gets your business <mark>noticed.</mark></h1>
+      <p class="lede">Automind Media is an advertising studio that specializes in social media: TikTok, Instagram, Facebook and YouTube. We build your ads from your own footage, film on site when it helps, and use AI tools for the rest. A person directs every ad. Video ads start at $350, graphic ads at $75.</p>
       <div class="hero-actions">
         <a class="btn" href="#quote">Build your quote</a>
         <a class="btn white" href="#work">See what we make</a>
@@ -328,14 +466,88 @@ footer a.mail { color: var(--sun); font-weight: 700; }
     </div>
   </section>
 
-  <section class="chapter white" id="how">
+  <section class="chapter white" id="footage">
+    <div class="wrap">
+      <div class="head">
+        <h2>Real footage, with AI where it helps</h2>
+        <p class="lede">Your ad can show your actual shop, staff and products. Pick one source or mix all three.</p>
+      </div>
+      <div class="sources">
+        <figure class="src">
+          <div class="pic phone" aria-hidden="true"><i></i></div>
+          <figcaption>
+            <h3>You send it</h3>
+            <p>Photos and clips from your phone. We edit them into a polished ad with captions, music and voiceover.</p>
+            <span class="tag">Included</span>
+          </figcaption>
+        </figure>
+        <figure class="src">
+          <div class="pic cam" aria-hidden="true"><i></i><b></b></div>
+          <figcaption>
+            <h3>We film on site</h3>
+            <p>We come to your business and record footage in person. Priced by location and time, so we quote it separately.</p>
+            <span class="tag">Custom quote</span>
+          </figcaption>
+        </figure>
+        <figure class="src">
+          <div class="pic gen" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <figcaption>
+            <h3>We create it with AI</h3>
+            <p>Visuals, scenes and voiceover made with AI tools, for products or ideas that are hard to film.</p>
+            <span class="tag">Included</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter cyan" id="plans">
+    <div class="wrap">
+      <div class="head">
+        <h2>Marketing plans</h2>
+        <p class="lede">Ads work best with a plan behind them. Follow one yourself, or let us run it with you each month.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Marketing plan</h3>
+          <p>A 30-day social media plan written for your business, for you to follow.</p>
+          <div class="cost"><b>$150</b><span>one time</span></div>
+          <ul>
+            <li>Which platforms to focus on, and why</li>
+            <li>A 30-day posting calendar</li>
+            <li>30 post ideas with caption starters</li>
+            <li>Best times to post for your audience</li>
+            <li>Hashtag and profile checklist</li>
+          </ul>
+          <a class="btn white" href="#quote" data-plan="plan">Add the marketing plan</a>
+        </article>
+        <article class="plan best">
+          <span class="flag">Done for you</span>
+          <h3>Monthly growth package</h3>
+          <p>We plan your month and make the ads for it. Worth $1,150 to $1,450 if bought separately.</p>
+          <div class="cost"><b>$1,000</b><span>per month</span></div>
+          <ul>
+            <li>A new marketing plan every month</li>
+            <li>2 short video ads, 15 to 30 seconds</li>
+            <li>4 graphic ads</li>
+            <li>Every ad sized for each platform you use</li>
+            <li>A monthly check-in on what's working</li>
+          </ul>
+          <a class="btn dark" href="#quote" data-plan="monthly">Start the monthly package</a>
+        </article>
+      </div>
+      <p class="note">Cancel the monthly package any time before your next month starts.</p>
+    </div>
+  </section>
+
+  <section class="chapter pink" id="how">
     <div class="wrap">
       <div class="head">
         <h2>Idea to finished ad in four steps</h2>
         <p class="lede">You stay in control of what gets made. We do the production.</p>
       </div>
       <ol class="steps">
-        <li><h3>Tell us what you need</h3><p>Build your quote below. Switch on what you want and the price shows straight away.</p></li>
+        <li><h3>Tell us what you need</h3><p>Build your quote below and send us any photos or video you already have.</p></li>
         <li><h3>We send a first draft</h3><p>A script and storyboard for a video ad, or a first design for a graphic ad.</p></li>
         <li><h3>You approve or ask for changes</h3><p>Two rounds of revisions are included with every job.</p></li>
         <li><h3>We deliver your files</h3><p>Finished files, sized and ready to post.</p></li>
@@ -344,7 +556,7 @@ footer a.mail { color: var(--sun); font-weight: 700; }
     </div>
   </section>
 
-  <section class="chapter pink" id="included">
+  <section class="chapter white" id="included">
     <div class="wrap">
       <div class="head">
         <h2>One price covers the whole job</h2>
@@ -356,7 +568,7 @@ footer a.mail { color: var(--sun); font-weight: 700; }
           <ul>
             <li>Script written for your business</li>
             <li>Storyboard for your approval</li>
-            <li>AI-generated video and visuals</li>
+            <li>Your footage, AI visuals, or both</li>
             <li>Professional AI voiceover</li>
             <li>Licensed background music</li>
             <li>Captions and your logo</li>
@@ -395,7 +607,7 @@ footer a.mail { color: var(--sun); font-weight: 700; }
           <div class="panel" id="cOpts">
             <h3>Your video ad</h3>
             <p class="sub" id="lenLabel">Length</p>
-            <div class="picks" role="radiogroup" aria-labelledby="lenLabel" style="margin-top:12px;border-top:2px solid var(--ink)">
+            <div class="picks" role="radiogroup" aria-labelledby="lenLabel" style="margin-top:12px;border-top:1px solid var(--line)">
               <label class="pick"><input type="radio" name="len" id="len15" value="15"><span>15 sec<small>$350</small></span></label>
               <label class="pick"><input type="radio" name="len" id="len30" value="30" checked><span>30 sec<small>$500</small></span></label>
               <label class="pick"><input type="radio" name="len" id="len45" value="45"><span>45 sec<small>$700</small></span></label>
@@ -416,12 +628,28 @@ footer a.mail { color: var(--sun); font-weight: 700; }
             <label class="row" for="fsCover"><span class="row-text"><b>Cover or banner</b><small>Facebook page, events</small></span><span class="switch"><input type="checkbox" role="switch" name="fsize" id="fsCover" value="Facebook cover or event banner"><i></i></span></label>
           </div>
 
+          <div class="panel" id="footOpts">
+            <h3>Footage</h3>
+            <label class="row" for="ownFootage"><span class="row-text"><b>I'll send my own photos or video</b><small>Included. We'll tell you how to send them.</small></span><span class="switch"><input type="checkbox" role="switch" id="ownFootage"><i></i></span></label>
+            <label class="row" for="onsite"><span class="row-text"><b>Film on site at my business</b><small>Custom quote, based on location and time</small></span><span class="switch"><input type="checkbox" role="switch" id="onsite"><i></i></span></label>
+          </div>
+
           <div class="panel">
+            <h3>Marketing plan</h3>
+            <div class="picks three" role="radiogroup" aria-label="Marketing plan">
+              <label class="pick"><input type="radio" name="plan" id="planNone" value="none" checked><span>No plan<small>Ads only</small></span></label>
+              <label class="pick"><input type="radio" name="plan" id="planOne" value="plan"><span>Marketing plan<small>$150 one time</small></span></label>
+              <label class="pick"><input type="radio" name="plan" id="planMonthly" value="monthly"><span>Monthly package<small>$1,000 per month</small></span></label>
+            </div>
+            <div class="plan-note" id="planNote" hidden></div>
+          </div>
+
+          <div class="panel" id="extraOpts">
             <h3>Extras</h3>
             <label class="row" for="rush"><span class="row-text"><b>Rush delivery</b><small id="rushSmall">3 business days instead of 7, + 25%</small></span><span class="switch"><input type="checkbox" role="switch" id="rush"><i></i></span></label>
             <label class="row" for="custom"><span class="row-text"><b>My project doesn't fit these options</b><small>We'll reply with a custom price</small></span><span class="switch"><input type="checkbox" role="switch" id="custom"><i></i></span></label>
             <p class="sub" id="revLabel" style="padding-bottom:12px">Extra revision rounds</p>
-            <div class="picks three" role="radiogroup" aria-labelledby="revLabel" style="border-top:2px solid var(--ink)">
+            <div class="picks three" role="radiogroup" aria-labelledby="revLabel" style="border-top:1px solid var(--line)">
               <label class="pick"><input type="radio" name="rev" id="rev0" value="0" checked><span>None<small>2 included</small></span></label>
               <label class="pick"><input type="radio" name="rev" id="rev1" value="1"><span>1 more<small>+ $75</small></span></label>
               <label class="pick"><input type="radio" name="rev" id="rev2" value="2"><span>2 more<small>+ $150</small></span></label>
@@ -445,6 +673,11 @@ footer a.mail { color: var(--sun); font-weight: 700; }
           <h3>Your quote</h3>
           <div class="price" id="price" aria-live="polite">$500</div>
           <p class="split" id="split">Base $500 + add-ons $0</p>
+          <p class="monthly" id="monthly" hidden>Then $1,000 per month for the monthly package</p>
+          <div class="incl-box" id="planIncl" hidden>
+            <b id="planInclTitle">Your monthly package includes</b>
+            <ul id="planInclList"></ul>
+          </div>
           <ul class="lines" id="lines"></ul>
           <p id="delivery">Delivered in 7 business days after you approve the first draft.</p>
           <a class="btn dark" id="send" href="mailto:automindmedia0@gmail.com">Email this quote request</a>
@@ -475,6 +708,11 @@ footer a.mail { color: var(--sun); font-weight: 700; }
   var BASE = { 15: 350, 30: 500, 45: 700, 60: 900 };
   var FLYER_BASE = 75, EXTRA_SIZE = 25;
   var EXTRA_FORMAT = 100, CUSTOM_MUSIC = 75, EXTRA_REVISION = 75, RUSH_RATE = 0.25;
+  var PLAN_ONCE = 150, PLAN_MONTHLY = 1000;
+  var PLAN_INCL = {
+    plan: ['Which platforms to focus on, and why', 'A 30-day posting calendar', '30 post ideas with caption starters', 'Best times to post for your audience', 'Hashtag and profile checklist'],
+    monthly: ['A new marketing plan every month', '2 short video ads, 15 to 30 seconds', '4 graphic ads', 'Every ad sized for each platform you use', 'A monthly check-in on what\'s working']
+  };
 
   function $(id) { return document.getElementById(id); }
   function money(n) { return '$' + n.toLocaleString('en-US'); }
@@ -488,7 +726,8 @@ footer a.mail { color: var(--sun); font-weight: 700; }
   function days(n) { return n + ' business day' + (n === 1 ? '' : 's'); }
 
   function quote() {
-    var wantC = $('needC').checked, wantF = $('needF').checked, any = wantC || wantF;
+    var wantC = $('needC').checked, wantF = $('needF').checked, ads = wantC || wantF;
+    var plan = picked('plan') || 'none', any = ads || plan !== 'none';
     var len = Number(picked('len')) || 30;
     var fmts = checkedValues('fmt'), fsizes = checkedValues('fsize');
     var rev = Number(picked('rev')) || 0, rush = $('rush').checked;
@@ -504,11 +743,13 @@ footer a.mail { color: var(--sun); font-weight: 700; }
       var extraSizes = Math.max(0, fsizes.length - 1);
       if (extraSizes) lines.push([extraSizes + ' extra graphic size' + (extraSizes > 1 ? 's' : ''), extraSizes * EXTRA_SIZE]);
     }
-    if (any && rev) lines.push([rev + ' extra revision round' + (rev > 1 ? 's' : ''), rev * EXTRA_REVISION]);
+    if (ads && rev) lines.push([rev + ' extra revision round' + (rev > 1 ? 's' : ''), rev * EXTRA_REVISION]);
     var sub = lines.reduce(function (s, l) { return s + l[1]; }, 0);
-    if (any && rush) lines.push(['Rush delivery', Math.round(sub * RUSH_RATE / 5) * 5]);
+    if (ads && rush) lines.push(['Rush delivery', Math.round(sub * RUSH_RATE / 5) * 5]);
+    if (plan === 'plan') { lines.push(['Marketing plan', PLAN_ONCE]); base += PLAN_ONCE; }
+    if (plan === 'monthly') { lines.push(['Monthly growth package, first month', PLAN_MONTHLY]); base += PLAN_MONTHLY; }
     var total = lines.reduce(function (s, l) { return s + l[1]; }, 0);
-    return { wantC: wantC, wantF: wantF, any: any, len: len, fmts: fmts, fsizes: fsizes, rush: rush, lines: lines,
+    return { ads: ads, plan: plan, own: $('ownFootage').checked, onsite: $('onsite').checked, wantC: wantC, wantF: wantF, any: any, len: len, fmts: fmts, fsizes: fsizes, rush: rush, lines: lines,
              base: base, total: total, stdDays: wantC ? 7 : 3, rushDays: wantC ? 3 : 1, custom: $('custom').checked };
   }
 
@@ -524,10 +765,15 @@ footer a.mail { color: var(--sun); font-weight: 700; }
       out.push('Formats: ' + (q.fmts.length ? q.fmts.join(', ') : 'not chosen yet'));
     }
     if (q.wantF) out.push('Graphic ad sizes: ' + (q.fsizes.length ? q.fsizes.join(', ') : 'not chosen yet'));
-    if (q.any) out.push('Delivery: ' + (q.rush ? 'Rush, ' + days(q.rushDays) : 'Standard, ' + days(q.stdDays)));
+    if (q.ads) out.push('Delivery: ' + (q.rush ? 'Rush, ' + days(q.rushDays) : 'Standard, ' + days(q.stdDays)));
+    if (q.plan === 'plan') { out.push('Marketing plan: yes, one time. Includes:'); PLAN_INCL.plan.forEach(function (x) { out.push('- ' + x); }); }
+    if (q.plan === 'monthly') { out.push('Monthly growth package: yes, $1,000 per month. Each month includes:'); PLAN_INCL.monthly.forEach(function (x) { out.push('- ' + x); }); }
+    if (q.ads) out.push('Footage: ' + ([q.own ? 'I will send my own photos or video' : '', q.onsite ? 'please quote on-site filming' : ''].filter(Boolean).join('; ') || 'AI-created visuals'));
     out.push('');
     q.lines.forEach(function (l) { out.push(l[0] + ': ' + money(l[1])); });
-    if (q.any) out.push((q.custom ? 'Starting estimate: ' : 'Estimate: ') + money(q.total));
+    if (q.any) out.push((q.custom || q.onsite ? 'Starting estimate: ' : 'Estimate: ') + money(q.total));
+    if (q.ads && q.own) { out.push(''); out.push('I will reply with my photos and video, or a Google Drive or Dropbox link to them.'); }
+    if (q.onsite) out.push('On-site filming is quoted separately. My business address: (please add)');
     out.push('');
     out.push('About the project:');
     out.push($('brief').value || '(not given)');
@@ -554,12 +800,28 @@ footer a.mail { color: var(--sun); font-weight: 700; }
   function render() {
     var q = quote();
     $('cOpts').hidden = !q.wantC;
+    $('footOpts').hidden = !q.ads;
+    $('extraOpts').hidden = !q.ads;
+    $('monthly').hidden = q.plan !== 'monthly';
+    var hasPlan = q.plan !== 'none';
+    $('planIncl').hidden = !hasPlan;
+    $('planNote').hidden = !hasPlan;
+    if (hasPlan) {
+      var items = PLAN_INCL[q.plan];
+      $('planInclTitle').textContent = q.plan === 'monthly' ? 'Each month includes' : 'Your marketing plan includes';
+      var pl = $('planInclList'); pl.textContent = '';
+      items.forEach(function (x) { var li = document.createElement('li'); li.textContent = x; pl.appendChild(li); });
+      var note = $('planNote'); note.textContent = '';
+      var bn = document.createElement('b'); bn.textContent = (q.plan === 'monthly' ? 'Each month: ' : 'Includes: ');
+      note.appendChild(bn); note.appendChild(document.createTextNode(items.join(', ') + '.'));
+    }
     $('fOpts').hidden = !q.wantF;
     if (q.custom) showPrice('Custom quote', true);
     else if (!q.any) showPrice('Pick a service', true);
     else showPrice(money(q.total), false);
-    $('split').textContent = !q.any ? 'Switch on a video ad, a graphic ad or both.'
-      : (q.custom ? 'Starting point: ' : '') + 'Base ' + money(q.base) + ' + add-ons ' + money(q.total - q.base);
+    $('split').textContent = !q.any ? 'Switch on an ad or pick a marketing plan.'
+      : (q.custom || q.onsite ? 'Starting point: ' : '') + 'Base ' + money(q.base) + ' + add-ons ' + money(q.total - q.base) +
+        (q.onsite ? ' + on-site filming, quoted separately' : '');
     var ul = $('lines');
     ul.textContent = '';
     q.lines.forEach(function (l) {
@@ -576,8 +838,12 @@ footer a.mail { color: var(--sun); font-weight: 700; }
     $('rushSmall').textContent = days(q.rushDays) + ' instead of ' + q.stdDays + ', + 25%';
     $('delivery').textContent = !q.any ? 'Your price shows here once you pick a service.'
       : q.custom ? 'Describe the project in the form and we will reply with a price.'
-      : 'Delivered in ' + days(q.rush ? q.rushDays : q.stdDays) + ' after you approve the first draft.';
-    var what = q.wantC && q.wantF ? 'video ad and graphic ad' : q.wantF ? 'graphic ad' : 'video ad';
+      : !q.ads ? 'Your plan arrives within 5 business days.'
+      : 'Ads delivered in ' + days(q.rush ? q.rushDays : q.stdDays) + ' after you approve the first draft' + (q.plan !== 'none' ? '. Your plan arrives within 5 business days.' : '.');
+    var parts = [];
+    if (q.wantC) parts.push('video ad'); if (q.wantF) parts.push('graphic ad');
+    if (q.plan === 'plan') parts.push('marketing plan'); if (q.plan === 'monthly') parts.push('monthly package');
+    var what = parts.join(', ') || 'Automind Media';
     $('send').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Quote request: ' + what) +
       '&body=' + encodeURIComponent(requestText(q));
     $('status').textContent = '';
@@ -591,6 +857,14 @@ footer a.mail { color: var(--sun); font-weight: 700; }
     var done = function () { $('status').textContent = 'Request copied. Paste it into an email to ' + EMAIL + '.'; };
     var fail = function () { $('status').textContent = 'Copying is blocked here. Email your details to ' + EMAIL + '.'; };
     try { navigator.clipboard.writeText(text).then(done, fail); } catch (err) { fail(); }
+  });
+  [].slice.call(document.querySelectorAll('[data-plan]')).forEach(function (a) {
+    a.addEventListener('click', function () {
+      var v = a.getAttribute('data-plan');
+      $(v === 'monthly' ? 'planMonthly' : 'planOne').checked = true;
+      if (v === 'monthly') { $('needC').checked = false; $('needF').checked = false; }
+      render();
+    });
   });
   [].slice.call(document.querySelectorAll('[data-pick]')).forEach(function (a) {
     a.addEventListener('click', function () {
