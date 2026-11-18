@@ -287,6 +287,28 @@ footer a.mail { color: var(--sun); font-weight: 700; }
 .list li::before, .always li::before, .plan li::before { background: var(--signal); border: 0; border-radius: 4px; }
 .list li::after, .always li::after, .plan li::after { border-color: #fff; }
 .plan { overflow: visible; }
+/* Starting prices (card structure adapted from a 21st.dev pricing section) */
+.rates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.rate { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--drop); padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+.rate h3 { font-size: 1.6rem; font-weight: 900; }
+.rate-sub { color: var(--muted); font-size: 0.98rem; }
+.rate-price { display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 14px 0; }
+.rate-price small { font-weight: 700; color: var(--muted); }
+.rate-price b { font-weight: 900; font-stretch: 118%; font-size: clamp(2.4rem, 4.4vw, 3.2rem); line-height: 1; letter-spacing: -0.03em; color: var(--signal); font-variant-numeric: tabular-nums; }
+.rate ul { margin: 0; padding: 0; list-style: none; }
+.rate li { position: relative; padding: 7px 0 7px 28px; font-weight: 600; font-size: 0.97rem; }
+.rate li::before { content: ""; position: absolute; left: 0; top: 9px; width: 18px; height: 18px; background: var(--signal); border-radius: 4px; }
+.rate li::after { content: ""; position: absolute; left: 6px; top: 11px; width: 5px; height: 10px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+.rate .btn { margin-top: auto; }
+.factors { margin-top: 40px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow-x: auto; }
+.factors h3 { padding: 20px 24px; font-size: 1.4rem; font-weight: 900; border-bottom: 1px solid var(--line); }
+.factors table { width: 100%; border-collapse: collapse; min-width: 560px; }
+.factors th, .factors td { text-align: left; padding: 13px 24px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.factors tbody tr:last-child th, .factors tbody tr:last-child td { border-bottom: 0; }
+.factors thead th { font-size: 0.88rem; color: var(--muted); font-weight: 700; background: var(--paper); }
+.factors tbody th { font-weight: 800; width: 22%; }
+.factors td { font-weight: 500; font-variant-numeric: tabular-nums; }
+.factors td:last-child { font-weight: 700; }
 .incl-box { background: #20242B; border: 1px solid #2E333B; border-radius: 8px; padding: 14px 16px; }
 .incl-box[hidden], .plan-note[hidden] { display: none; }
 .incl-box b { display: block; font-weight: 800; margin-bottom: 6px; color: #fff; }
@@ -341,7 +363,7 @@ footer a.mail { color: #FF8A66; }
 :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
 
 @media (max-width: 920px) {
-  .hero, .quote, .work, .incl, .plans, .sources { grid-template-columns: minmax(0, 1fr); }
+  .hero, .quote, .work, .incl, .plans, .sources, .rates { grid-template-columns: minmax(0, 1fr); }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .steps li:nth-child(2) { border-right: 0; }
   .steps li:nth-child(-n+2) { border-bottom: var(--rule); }
@@ -382,6 +404,7 @@ footer a.mail { color: #FF8A66; }
     <a class="mark" href="#top"><i aria-hidden="true"></i>Automind Media</a>
     <nav class="nav" aria-label="Main">
       <a href="#work">What we make</a>
+      <a href="#pricing">Pricing</a>
       <a href="#plans">Marketing plans</a>
       <a href="#how">How it works</a>
       <a class="btn" href="#quote">Build your quote</a>
@@ -556,35 +579,68 @@ footer a.mail { color: #FF8A66; }
     </div>
   </section>
 
-  <section class="chapter white" id="included">
+  <section class="chapter white" id="pricing">
     <div class="wrap">
       <div class="head">
-        <h2>One price covers the whole job</h2>
-        <p class="lede">You know the cost before you commit.</p>
+        <h2>Starting prices</h2>
+        <p class="lede">Every quote starts from these prices. What you end up paying depends on the length, the footage and the extras you choose, and you see that before anything is made.</p>
       </div>
-      <div class="incl">
-        <div class="list">
-          <h3>Every video ad includes</h3>
+      <div class="rates">
+        <article class="rate">
+          <h3>Video ads</h3>
+          <p class="rate-sub">15 to 60 seconds, for TikTok, Instagram Reels, YouTube and Facebook.</p>
+          <div class="rate-price"><small>Starting at</small><b>$350</b></div>
           <ul>
             <li>Script written for your business</li>
             <li>Storyboard for your approval</li>
             <li>Your footage, AI visuals, or both</li>
-            <li>Professional AI voiceover</li>
-            <li>Licensed background music</li>
+            <li>Professional voiceover and licensed music</li>
             <li>Captions and your logo</li>
             <li>Two rounds of revisions</li>
           </ul>
-        </div>
-        <div class="list">
-          <h3>Every graphic ad includes</h3>
+          <a class="btn dark" href="#quote" data-pick="c">Price a video ad</a>
+        </article>
+        <article class="rate">
+          <h3>Graphic ads</h3>
+          <p class="rate-sub">Promo graphics for Instagram and Facebook feeds and stories.</p>
+          <div class="rate-price"><small>Starting at</small><b>$75</b></div>
           <ul>
             <li>Custom design, not a template</li>
             <li>Your logo, colors and wording</li>
-            <li>Made for Instagram and Facebook</li>
             <li>One size of your choice, ready to post</li>
             <li>Two rounds of revisions</li>
           </ul>
-        </div>
+          <a class="btn dark" href="#quote" data-pick="f">Price a graphic ad</a>
+        </article>
+        <article class="rate">
+          <h3>Marketing plans</h3>
+          <p class="rate-sub">A plan you follow, or a monthly package where we make the ads too.</p>
+          <div class="rate-price"><small>Starting at</small><b>$150</b></div>
+          <ul>
+            <li>Marketing plan: $150 one time</li>
+            <li>Monthly growth package: $1,000 per month</li>
+            <li>Monthly package includes 2 video ads and 4 graphic ads</li>
+          </ul>
+          <a class="btn dark" href="#plans">Compare the plans</a>
+        </article>
+      </div>
+
+      <div class="factors">
+        <h3>What changes your price</h3>
+        <table>
+          <thead><tr><th scope="col">What you choose</th><th scope="col">Options</th><th scope="col">Effect on price</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Length</th><td>15, 30, 45 or 60 seconds</td><td>$350, $500, $700 or $900</td></tr>
+            <tr><th scope="row">Footage</th><td>AI-created visuals</td><td>Included</td></tr>
+            <tr><th scope="row"></th><td>Photos and video you send us</td><td>Included</td></tr>
+            <tr><th scope="row"></th><td>Filmed on site at your business</td><td>Quoted separately, based on location and time</td></tr>
+            <tr><th scope="row">Formats</th><td>Widescreen, vertical, square</td><td>One included, + $100 each extra</td></tr>
+            <tr><th scope="row">Graphic sizes</th><td>Feed post, story, cover or banner</td><td>One included, + $25 each extra</td></tr>
+            <tr><th scope="row">Music</th><td>Licensed track or custom music</td><td>Licensed included, custom + $75</td></tr>
+            <tr><th scope="row">Revisions</th><td>Two rounds, or more</td><td>Two included, + $75 per extra round</td></tr>
+            <tr><th scope="row">Turnaround</th><td>Standard or rush</td><td>Rush + 25%</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -593,7 +649,7 @@ footer a.mail { color: #FF8A66; }
     <div class="wrap">
       <div class="head">
         <h2>Build your quote</h2>
-        <p class="lede">Switch on what you need. The price updates as you go.</p>
+        <p class="lede">Switch on what you need and see your starting price. We confirm the final price with you before any work starts.</p>
       </div>
 
       <div class="quote">
@@ -670,7 +726,8 @@ footer a.mail { color: #FF8A66; }
         </form>
 
         <aside class="ticket">
-          <h3>Your quote</h3>
+          <h3>Your starting price</h3>
+          <p class="split" id="priceLabel">Starting at</p>
           <div class="price" id="price" aria-live="polite">$500</div>
           <p class="split" id="split">Base $500 + add-ons $0</p>
           <p class="monthly" id="monthly" hidden>Then $1,000 per month for the monthly package</p>
@@ -771,7 +828,7 @@ footer a.mail { color: #FF8A66; }
     if (q.ads) out.push('Footage: ' + ([q.own ? 'I will send my own photos or video' : '', q.onsite ? 'please quote on-site filming' : ''].filter(Boolean).join('; ') || 'AI-created visuals'));
     out.push('');
     q.lines.forEach(function (l) { out.push(l[0] + ': ' + money(l[1])); });
-    if (q.any) out.push((q.custom || q.onsite ? 'Starting estimate: ' : 'Estimate: ') + money(q.total));
+    if (q.any) out.push('Starting price: ' + money(q.total) + (q.onsite ? ' plus on-site filming, quoted separately' : ''));
     if (q.ads && q.own) { out.push(''); out.push('I will reply with my photos and video, or a Google Drive or Dropbox link to them.'); }
     if (q.onsite) out.push('On-site filming is quoted separately. My business address: (please add)');
     out.push('');
@@ -819,6 +876,7 @@ footer a.mail { color: #FF8A66; }
     if (q.custom) showPrice('Custom quote', true);
     else if (!q.any) showPrice('Pick a service', true);
     else showPrice(money(q.total), false);
+    $('priceLabel').hidden = !q.any || q.custom;
     $('split').textContent = !q.any ? 'Switch on an ad or pick a marketing plan.'
       : (q.custom || q.onsite ? 'Starting point: ' : '') + 'Base ' + money(q.base) + ' + add-ons ' + money(q.total - q.base) +
         (q.onsite ? ' + on-site filming, quoted separately' : '');
